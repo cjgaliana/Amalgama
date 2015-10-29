@@ -4,4 +4,5 @@ platform: Any CPU
 before_build:
 - cmd: nuget restore Amalgama\Amalgama.sln
 build:
+  project: Amalgama\Amalgama.sln
   verbosity: minimal
