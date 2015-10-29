@@ -1,13 +1,13 @@
 using Amalgama.PhotoAutoPicker.Views;
+using Excel;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Input;
-using System.Linq;
-using Excel;
-using System.Data;
 
 namespace Amalgama.PhotoAutoPicker.ViewModel
 {
@@ -214,8 +214,7 @@ namespace Amalgama.PhotoAutoPicker.ViewModel
 
             foreach (var fileName in this._fileNames)
             {
-
-                var allFiles = Directory.EnumerateFiles(this.SourceFolderPath, "*", SearchOption.AllDirectories).Select(x=> Path.GetFullPath(x)).ToList();
+                var allFiles = Directory.EnumerateFiles(this.SourceFolderPath, "*", SearchOption.AllDirectories).Select(x => Path.GetFullPath(x)).ToList();
                 var matchingFile = allFiles.Where(x => Path.GetFileNameWithoutExtension(x) == fileName).ToList();
 
                 foreach (var file in matchingFile)
@@ -228,12 +227,7 @@ namespace Amalgama.PhotoAutoPicker.ViewModel
                         copyCount++;
                     }
                 }
-
-                
             }
-
-
-
 
             this.IsBusy = false;
             MessageBox.Show("Se han importado " + copyCount + " archivos", "Hecho!");
