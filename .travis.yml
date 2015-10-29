@@ -1,2 +1,6 @@
 language: csharp
 solution: Amalgama.sln
+before_install:
+  - pip install --user codecov
+after_success:
+  - codecov
